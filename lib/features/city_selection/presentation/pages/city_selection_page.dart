@@ -16,11 +16,15 @@ class CitySelectionPage extends StatelessWidget {
           backgroundColor: Colors.black,
           toolbarHeight: MediaQuery.of(context).size.height * 0.001,
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black26,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [_HeaderImage(), _Title(), _CityList()],
+            children: const [
+              Stack(children: [_HeaderImage(), _Title()]),
+              SizedBox(height: 10),
+              _CityList(),
+            ],
           ),
         ),
       ),
@@ -46,14 +50,33 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
-      child: Text(
-        'Выберите город',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 28,
-          fontWeight: FontWeight.w600,
+    return Positioned(
+      left: 0,
+      right: 0,
+      bottom: -20,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 6,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Text(
+          'Выберите город',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );
@@ -105,12 +128,12 @@ class _CityTile extends StatelessWidget {
                 children: [
                   Text(
                     city.name,
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     '${city.branches} филиалов',
-                    style: const TextStyle(color: Colors.grey, fontSize: 13),
+                    style: const TextStyle(color: Colors.grey, fontSize: 16),
                   ),
                 ],
               ),
