@@ -108,7 +108,8 @@ class _CityTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      borderRadius: BorderRadius.circular(10),
       onTap: () {
         context.read<CityCubit>().selectCity(city);
         // TODO: navigation to main screen
