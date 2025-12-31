@@ -4,6 +4,8 @@ import 'package:muzhiki_pro/di.dart';
 import 'package:muzhiki_pro/features/city_selection/domain/entities/city.dart';
 import 'package:muzhiki_pro/features/city_selection/presentation/cubit/city_cubit.dart';
 
+import '../../../web_pages/presentation/webviewpage.dart';
+
 class CitySelectionPage extends StatelessWidget {
   const CitySelectionPage({super.key});
 
@@ -112,8 +114,13 @@ class _CityTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       onTap: () {
         context.read<CityCubit>().selectCity(city);
-        // TODO: navigation to main screen
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => WebViewPage(url: city.bookingUrl)),
+        );
       },
+
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         padding: const EdgeInsets.all(16),

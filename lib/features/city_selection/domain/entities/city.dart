@@ -1,6 +1,11 @@
 class City {
   final String name;
   final int branches;
+  final String bookingUrl;
 
-  City({required this.name, required this.branches});
+  const City({
+    required this.name,
+    required this.branches,
+    required this.bookingUrl,
+  });
 }
